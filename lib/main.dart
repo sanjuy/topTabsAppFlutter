@@ -95,9 +95,9 @@ class _DragAndDropScreenState extends State<DragAndDropScreen>
           ),
           Expanded(
             child: TabBarView(controller: _tabController, children: [
+              Screen4(),
               const Text("Outside Inventory",
                   style: TextStyle(color: Colors.white)),
-              Screen4(),
               //TODO: INSIDE INVENTORY
               Screen1(),
               //TODO: INTERACTIVE CHECKSHEET

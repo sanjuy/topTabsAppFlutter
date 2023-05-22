@@ -17,63 +17,63 @@ class _Screen2State extends State<Screen2> {
     InteractiveModel(
         name: "Fluid Level and Quality",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Hose connections and leakage",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "V-Belt Condition",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Battery Condition",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Power Window Operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Horn Operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Seat Belt Operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Interior illumination",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Radio Options",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "ORVMs Operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Wiper and windshield washer operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "Warning and Instrument Cluster",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
     InteractiveModel(
         name: "AC Operation",
         message: TextEditingController(),
-        numStatus: 50.0),
+        numStatus: 0.0),
   ];
 
   void changeColurs(double value){
-    if (value.toInt() > 50){
+    if (value.toInt() > 0){
       selColor = Colors.green;
-    }else if (value.toInt() < 50){
+    }else if (value.toInt() < 0){
       selColor = Colors.red;
-    }else if (value.toInt() == 50){
+    }else if (value.toInt() == 0){
       selColor = Colors.grey;
     }
   }
@@ -88,20 +88,19 @@ class _Screen2State extends State<Screen2> {
           return Row(
             children: [
               Container(
-                width: 110,
+                width: 90,
                 height: 50,
-                padding:
-                const EdgeInsets.only(left: 0, right: 0, top: 0),
+                padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
                 child: SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    activeTrackColor: Colors.blue,
-                    inactiveTrackColor: Colors.blue,
+                    // activeTrackColor: Colors.blue,
+                    // inactiveTrackColor: Colors.blue,
                     trackShape: const RectangularSliderTrackShape(),
                     trackHeight: 4.0,
-                    thumbColor: Colors.blueAccent,
+                    // thumbColor: Colors.blueAccent,
                     thumbShape: const RoundSliderThumbShape(
                         enabledThumbRadius: 12.0),
-                    overlayColor: Colors.red.withAlpha(32),
+                    // overlayColor: Colors.red.withAlpha(32),
                     overlayShape: const RoundSliderOverlayShape(
                         overlayRadius: 20.0),
                   ),
@@ -110,8 +109,8 @@ class _Screen2State extends State<Screen2> {
                         (BuildContext context, StateSetter setState) {
                       return Slider(
                         value: items2[index].numStatus,
-                        min: 0,
-                        max: 100,
+                        min: -1,
+                        max: 1,
                         divisions: 2,
                         activeColor: selColor,
                         inactiveColor: selColor,
@@ -121,22 +120,22 @@ class _Screen2State extends State<Screen2> {
                             changeColurs(value);
                           });
                         },
-                        onChangeEnd: (double value) {
-                          setState(() {
-                            items2[index].numStatus = value;
-                            changeColurs(value);
-                          });
-                        },
+                        // onChangeEnd: (double value) {
+                        //   setState(() {
+                        //     items2[index].numStatus = value;
+                        //     changeColurs(value);
+                        //   });
+                        // },
                       );
                     },
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 300,
                 child: Text(
                   items2[index].name,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white,fontSize: 18),
                 ),
               ),
               Expanded(
@@ -161,7 +160,7 @@ class _Screen2State extends State<Screen2> {
         child: Row(
           children: [
             const Text("Remarks",
-                style: TextStyle(color: Colors.white)),
+                style: TextStyle(color: Colors.white, fontSize: 20)),
             const SizedBox(width: 10),
             Expanded(
               child: TextField(
@@ -177,7 +176,7 @@ class _Screen2State extends State<Screen2> {
             const SizedBox(width: 10),
             TextButton(
                 style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue.withOpacity(0.4)),
+                    backgroundColor: Colors.blue.withOpacity(0.5)),
                 onPressed: () {
                   final List<InteractiveModel> formData = [];
 
@@ -196,7 +195,7 @@ class _Screen2State extends State<Screen2> {
                 },
                 child: const Text(
                   "Save",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontSize: 20),
                 ))
           ],
         ),
