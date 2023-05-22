@@ -6,6 +6,8 @@ import 'Models.dart';
 import 'Screen2.dart';
 import 'Screen3.dart';
 import 'Screen4.dart';
+import 'SubScreen2.dart';
+import 'subScreen1.dart';
 
 void main() {
   runApp(MyApp());
@@ -100,8 +102,8 @@ class _DragAndDropScreenState extends State<DragAndDropScreen>
               Screen1(),
               //TODO: INTERACTIVE CHECKSHEET
               Screen2(),
-              const Text("dfsghjkl;", style: TextStyle(color: Colors.white)),
-              const Text("dfsghjkl;", style: TextStyle(color: Colors.white)),
+              ButtonClass(),
+              CarsScreen(),
               const Text("dfsghjkl;", style: TextStyle(color: Colors.white)),
               const Text("dfsghjkl;", style: TextStyle(color: Colors.white)),
               Screen3(),
