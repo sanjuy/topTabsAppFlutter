@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class Screen4 extends StatefulWidget {
@@ -20,6 +20,7 @@ class _Screen4State extends State<Screen4> {
       backgroundColor: Colors.green,
       body: SingleChildScrollView(
         child: Container(
+            // color: Colors.red,
             width: MediaQuery.of(context).size.width,
             padding:
                 const EdgeInsets.only(top: 30, bottom: 30, left: 70, right: 70),
@@ -29,55 +30,26 @@ class _Screen4State extends State<Screen4> {
                   children: [
                     Row(
                       children: [
-                        Column(
-                          children: [
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh", style: TextStyle(color: Colors.white))
-                          ],
-                        ),
+                        const SizedBox(width: 50),
+                        notchCardView(isNotchUp: false),
                         const Spacer(),
-                        Column(
-                          children: [
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh", style: TextStyle(color: Colors.white))
-                          ],
-                        ),
+                        notchCardView(isNotchUp: false),
+                        const SizedBox(width: 50),
                       ],
                     ),
-                    const SizedBox(height: 10),
                     Container(
-                      height: MediaQuery.of(context).size.height / 2,
-                      color: Colors.transparent,
+                      // width: MediaQuery.of(context).size.width - 250,
+                      // height: MediaQuery.of(context).size.height / 3 -132,
+                      color: Colors.red,
                       child: Image.network("https://i.ibb.co/wC0tfsR/name.png"),
                     ),
-                    const SizedBox(height: 10),
                     Row(
                       children: [
-                        Column(
-                          children: [
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh", style: TextStyle(color: Colors.white))
-                          ],
-                        ),
+                        const SizedBox(width: 50),
+                        notchCardView(isNotchUp: true),
                         const Spacer(),
-                        Column(
-                          children: [
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh",
-                                style: TextStyle(color: Colors.white)),
-                            Text("dsfgh", style: TextStyle(color: Colors.white))
-                          ],
-                        ),
+                        notchCardView(isNotchUp: true),
+                        const SizedBox(width: 50),
                       ],
                     )
                   ],
@@ -151,35 +123,59 @@ class _Screen4State extends State<Screen4> {
                     ),
                   ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                      Transform.rotate(
-                      angle: pi,
-                      child: ClipPath(
-                        clipper: TriangleClipper(),
-                        child: Container(
-                          color: Colors.red,
-                          height: 15,
-                          width: 25,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 200,
-                      color: Colors.red,
-                      child: const Center(
-                        child: Text("Download"),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             )),
       ),
+    );
+  }
+
+  Column notchCardView({bool? isNotchUp}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: isNotchUp == true
+          ? <Widget>[
+              Transform.rotate(
+                angle: pi,
+                child: ClipPath(
+                  clipper: TriangleClipper(),
+                  child: Container(
+                    color: Colors.black,
+                    height: 15,
+                    width: 25,
+                  ),
+                ),
+              ),
+              Container(
+                width: 250,
+                height: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.black,
+                ),
+                child: const Center(child: Text("sdbcnjksd")),
+              ),
+            ]
+          : <Widget>[
+              Container(
+                width: 250,
+                height: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.black,
+                ),
+                child: const Center(child: Text("sdbcnjksd")),
+              ),
+              ClipPath(
+                clipper: TriangleClipper(),
+                child: Container(
+                  color: Colors.black,
+                  height: 15,
+                  width: 25,
+                ),
+              ),
+            ],
     );
   }
 }
